@@ -1,0 +1,213 @@
+// 公共样式
+@import url(base.less);
+* {
+	-webkit-user-select: none;
+}
+input {
+	-webkit-user-select: text;
+}
+body {
+	.loading-mask {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.65) url(../assets/loading.svg) no-repeat center center;
+		background-size: 1rem auto;
+		z-index: 400;
+		left: 0;
+		top: 0;
+		color: #fff;
+		font-size: 0.16rem;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.loading-text {
+			margin-top: 1rem;
+			.animation-i(blink,2s,0s,linear);
+		}
+		.loading-close {
+			width: 0.3rem;
+			height: 0.3rem;
+			background: rgba(255,255,255,0.6) url(../assets/mask-close.png) no-repeat center center;
+			background-size: 0.15rem auto;
+			position: absolute;
+			right: 0.15rem;
+			top: 0.15rem;
+			border-radius: 50%;
+		}
+	}
+	.mask {
+		left: 0;
+		top: 0;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.65);
+		z-index: 300;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		&.dialog-layer {
+			.dialog {
+				display: block;
+				border: 0;
+				width: 4.38rem;
+				background: #fff;
+				border-radius: 0.1rem;
+				box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.29);
+				overflow: hidden;
+				height: auto;
+				transform: scale(0);
+				transition: all 200ms 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				.title {
+					height: 0.4rem;
+					background: #eeeeee;
+					font-size: 0.2rem;
+					color: #000232;
+					line-height: 0.4rem;
+					padding-left: 0.17rem;
+					position: relative;
+					.close-btn {
+						width: 0.4rem;
+						height: 0.4rem;
+						background: url(../assets/alert-close.png) no-repeat center center;
+						background-size: 0.16rem auto;
+						position: absolute;
+						right: 0;
+						top: 0;
+					}
+				}
+				.content {
+					display: block;
+					margin: 0;
+					padding-bottom: 0.3rem;
+					height: auto;
+					&.nobtn {
+						padding-bottom: 0;
+					}
+					.texts {
+						line-height: 2;
+						font-size: 0.18rem;
+						color: #333333;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						padding: 0.4rem;
+					}
+					.btns {
+						display: flex;
+						justify-content: space-around;
+						button {
+							width: 1.24rem;
+							height: 0.38rem;
+							font-size: 0.2rem;
+							border-radius: 0.03rem;
+							border: 1px solid #2f80c5;
+							&.ok-btn {
+								background: #2f80c5;
+								color: #fff;
+							}
+							&.cancel-btn {
+								color: #2f80c5;
+								background: #fff;
+							}
+						}
+					}
+				}
+			}
+		}
+		transition: opacity 200ms 0s linear;
+		&.show {
+			opacity: 1;
+			.dialog {
+				transform: scale(1);
+			}
+		}
+	}
+	.calendar-box {
+		font-size: 0.17rem;
+		color: #000000;
+		width: 8.2rem;
+		margin: 0 auto 0.3rem;
+		background: #fff;
+	}
+	.cal-bd {
+		border-bottom: 1rem/100 solid #cccccc;
+	}
+	.highlight {
+		color: #ff2a2a;
+	}
+	.calendar-head {
+		height: 0.46rem;
+		display: flex;
+		align-items: center;
+	}
+	.calendar-head span {
+		flex: 1;
+		text-align: center;
+	}
+	.calendar-control {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 50rem/100;
+		color: #000;
+	}
+	.calendar-control .control-l,
+	.calendar-control .control-r {
+		width: 60rem/100;
+		height: 50rem/100;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.calendar-control .control-l img,
+	.calendar-control .control-r img{
+		width: 7rem/100;
+	}
+	.calendar-control .control-r img {
+		transform: scaleX(-1);
+	}
+	.calendar-control .control-c {
+		text-align: center;
+		margin: 0 30rem/100;
+	}
+	.calendar-row {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		height: 46rem/100;
+	}
+	.calendar-col {
+		width: 33rem/100;
+		height: 33rem/100;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		position: relative;
+	}
+	.calendar-col.disabled {
+		color: #fff;
+		background: #cacaca;
+	}
+	.calendar-col.selected {
+		color: #fff;
+		background: #ff2a2a;
+	}
+	.calendar-col.highlighted {
+		&::after {
+			content: "";
+			position: absolute;
+			width: 0.06rem;
+			height: 0.06rem;
+			border-radius: 50%;
+			background: #ff2a2a;
+			bottom: 0;
+			left: 50%;
+			margin-left: -0.03rem;
+		}
+	}
+}

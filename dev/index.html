@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>明兮大语文</title>
+        <script> 
+        let platform = (function() {
+        switch(process.platform) {
+            case 'win32':
+                return 'win'
+            default:
+            case 'darwin':
+                return 'mac'
+            }
+        }())
+        let dir = 'native-' + platform
+        document.write('<script defer> var agora = require(".\/libs\/AgoraSDK\/'+ dir +'\/agora_node_ext.node") <\/script>');
+        window.$require = require; 
+        delete window.require;
+        </script> 
+    </head>
+    <body>
+        <div id="app" class="full-h"></div>
+    </body>
+</html>

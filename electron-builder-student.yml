@@ -1,0 +1,51 @@
+appId: com.youshi.muwen
+copyright: youshi inc.
+productName: 明兮大语文
+
+directories:
+  output: build/student
+  app: output
+
+dmg:
+  contents:
+    - type: link
+      path: /Applications
+      x: 410
+      y: 150
+    - type: file
+      x: 130
+      y: 150
+
+mac:
+  asar: true
+  asarUnpack: "**/music.mp3"
+  category: public.app-category.tools
+  icon: icns/mac-icon.icns
+
+# nsis:
+#   oneClick: false
+#   allowToChangeInstallationDirectory: true
+#   installerIcon: icns/win-icon.ico
+#   uninstallerIcon: icns/win-icon.ico
+#   installerHeaderIcon: icns/win-icon.ico
+#   license: license.txt
+#   createDesktopShortcut: true
+#   createStartMenuShortcut: true
+nsis:
+  deleteAppDataOnUninstall: true
+
+win:
+  asar: true
+  asarUnpack: 
+    - "**/native-win/*"
+    - "**/music.mp3"
+  target: 
+    target: nsis
+    arch:
+      - ia32
+  icon: icns/win-icon.ico
+  verifyUpdateCodeSignature: false
+
+publish:
+  - provider: generic
+    url: http://file.mw019.com/software

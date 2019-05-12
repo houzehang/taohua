@@ -1,0 +1,93 @@
+@import url(base.less);
+.sidebar {
+	width: 1.05rem;
+	height: 5.09rem;
+	position: fixed;
+	left: 0.15rem;
+	top: 50%;
+	margin-top: -5.09/2rem;
+	background: #fff;
+	border-top-right-radius: 0.2rem;
+	border-bottom-right-radius: 0.2rem;
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	.center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	&.teacher {
+		height: 2.9rem;
+		margin-top: -2.9/2rem;
+		.device-area {
+			border-bottom: 0;
+		}
+	}
+	.avatar-area {
+		width: 0.78rem;
+		height: 1.48rem;
+		border-bottom: 1px solid #dddddd;
+		&:active {
+			opacity: 0.6;
+		}
+		.avatar {
+			width: 0.62rem;
+			height: 0.62rem;
+			border-radius: 50%;
+			overflow: hidden;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		.nickname {
+			font-size: 0.16rem;
+			color: #363636;
+			margin-top: 0.1rem;
+			width: 0.78rem;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-align: center;
+		}
+	}
+	.txt {
+		font-size: 0.16rem;
+		color: #959bb5;
+		margin-top: 0.1rem;
+		text-align: center;
+	}
+	.mycourses-area {
+		width: 0.78rem;
+		height: 1.14rem;
+		border-bottom: 1px solid #dddddd;
+		.mycourses-btn {
+			.view-base("stu_icon_mycourse.png");
+		}
+		&:active {
+			opacity: 0.6;
+		}
+	}
+	.device-area {
+		width: 0.78rem;
+		height: 1.14rem;
+		border-bottom: 1px solid #dddddd;
+		.device-btn {
+			.view-base("sidebar-device.png");
+		}
+		&:active {
+			opacity: 0.6;
+		}
+	}
+	.help-area {
+		flex: 1;
+		.help-btn {
+			.view-base("sidebar-help.png");
+		}
+		&:active {
+			opacity: 0.6;
+		}
+	}
+}

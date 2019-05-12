@@ -1,0 +1,60 @@
+@import url(base.less);
+@import url(~normalize.css/normalize.css);
+@import url(./common.less);
+html,body {
+	height: 100%;
+}
+html,body {
+	background: #484f70;
+	color: #fff;
+	#app, .page {
+		width: 100%;
+		height: 100%;
+	}
+	.page {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.close-btn {
+		width: 29px;
+		height: 29px;
+		background: url(../assets/loading-close.png) no-repeat center center;
+		background-size: 100% auto;
+		position: absolute;
+		right: 5px;
+		top: 5px;
+	}
+	.logo {
+		width: 72px;
+		height: 72px;
+		background: url(../assets/loading-logo.png) no-repeat center center;
+		background-size: 100% auto;
+		margin-bottom: 22px;
+	}
+	.tips {
+		font-size: 18px;
+		color: #ffffff;
+	}
+	.progress {
+		margin-top: 34px;
+		width: 315px;
+		height: 20px;
+		display: flex;
+		align-items: center;
+		.bar {
+			margin-right: 10px;
+			width: 270px;
+			height: 14px;
+			border-radius: 14px;
+			background: #fff;
+			overflow: hidden;
+			.bar-i {
+				border-radius: 14px;
+				background: #44a650;
+				height: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,108 @@
+//动画样式库
+@import url(base.less);
+
+@-webkit-keyframes round {
+    0% { .transform(rotate(0)); }
+    100% { .transform(rotate(360deg)); }
+}
+
+@-webkit-keyframes turn {
+    0% { .transform(perspective(2000) rotateY(0)); }
+    50% { .transform(perspective(2000) rotateY(90deg)); }
+    100% { .transform(perspective(2000) rotateY(0)); }
+}
+
+@-webkit-keyframes scaleturn {
+    0% { .transform(perspective(2000) rotateY(0)); opacity: 1; }
+    50% { .transform(perspective(2000) rotateY(-90deg)); opacity: 0; }
+    100% { .transform(perspective(2000) rotateY(0)); opacity: 1; }
+}
+
+@-webkit-keyframes drop {
+    0% { opacity: 0; .transform(translate(0,-400px)); }
+    100% {opacity: 1; .transform(translate(0,0));}
+}
+
+@-webkit-keyframes slideup {
+    0% { opacity: 1; .transform(translate(0,0)); }
+    100% {opacity: 0; .transform(translate(0,-400px));}
+}
+
+@-webkit-keyframes slidedown {
+    0% { opacity: 1; .transform(translate(0,0)); }
+    100% {opacity: 0; .transform(translate(0,400px));}
+}
+
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@-webkit-keyframes bling {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-webkit-keyframes shake {
+    0% { .transform(scale(1)); }
+    50% { .transform(scale(0.9)); }
+    100% { .transform(scale(1)); }
+}
+
+
+@-webkit-keyframes fadein {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-webkit-keyframes stretch {
+    0% { opacity: 0; }
+    50% { opacity: 1;}
+    85% { opacity: 0;}
+    100% { opacity: 1;}
+}
+@-webkit-keyframes bombin {
+    0% {opacity: 0; .transform(scale(0)); }
+    100% {opacity: 1; .transform(scale(1));}
+}
+@-webkit-keyframes bombout {
+    0% {opacity: 1; .transform(scale(1)); }
+    100% {opacity: 0; .transform(scale(0));}
+}
+@-webkit-keyframes scalein {
+    0% {opacity: 0; .transform(scale(2)); }
+    100% {opacity: 1; .transform(scale(1));}
+}
+@-webkit-keyframes scaleout {
+    0% {opacity: 1; .transform(scale(1)); }
+    100% {opacity: 0; .transform(scale(2));}
+}
+@-webkit-keyframes leftshow {
+    0% {opacity: 0; .transform(translate(-400px,0)); }
+    100% {opacity: 1; .transform(translate(0,0));}
+}
+@-webkit-keyframes rightshow {
+    0% {opacity: 0; .transform(translate(400px,0)); }
+    100% {opacity: 1; .transform(translate(0,0));}
+}
+@-webkit-keyframes topshow {
+    0% {opacity: 0; .transform(translate(0,-600px)); }
+    100% {opacity: 1; .transform(translate(0,0));}
+}
+@-webkit-keyframes bottomshow {
+    0% { .transform(translate(0,600px)); }
+    100% {opacity: 1; .transform(translate(0,0));}
+}
+@-webkit-keyframes bottomhide {
+    0% {opacity: 1; .transform(translate(0,0)); }
+    100% {opacity: 0; .transform(translate(0,600px));}
+}
+@-webkit-keyframes tophide {
+    0% {opacity: 1; .transform(translate(0,0)); }
+    100% {opacity: 0; .transform(translate(0,-200px));}
+}
