@@ -6,6 +6,7 @@ fi
 TOTAL_STEP=4
 TEACHER=false
 CONFIG_FILE=./electron-builder-student.yml
+
 if [ "$2" = "-teacher" ];then
 	TEACHER=true
 	CONFIG_FILE=./electron-builder-teacher.yml
