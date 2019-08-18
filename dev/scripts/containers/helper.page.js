@@ -83,9 +83,6 @@ class Helper extends React.Component {
 	}
 	
 	render() {
-		let shellItems = [
-			{name: 'shell-1',}
-		]
 		return  <div className="helper-page">
            <div className="helper-panel">
                 <div className='nav-bar'>
