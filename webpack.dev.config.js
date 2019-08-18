@@ -12,7 +12,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'public'),
-    publicPath: 'http://localhost:3030/',
+    publicPath: 'http://localhost:3040/',
     filename: '[name].js',
   },
   module: {
@@ -69,7 +69,7 @@ module.exports = {
     }),
     new HtmlWebpackIncludeAssetsPlugin({
       assets: [
-        'http://localhost:3030/libs/flexible.js'
+        'http://localhost:3040/libs/flexible.js'
       ],
       publicPath: false,
       append: false,
