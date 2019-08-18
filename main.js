@@ -25,7 +25,7 @@ let updateWindow, mainWindow,
     rationalMaximize = false,
     screenSize,
     closeWarning,
-    mainWindowSize = { width: 700, height: 350 },
+    mainWindowSize = { width: 1200, height: 600 },
     hotkeyTickTimer;
 
 //register hotkey for mainwindow
@@ -287,4 +287,15 @@ ipcMain.on('on-closewarning', function (warningMsg) {
 
 ipcMain.on('off-closewarning', function () {
     TEACHER && (closeWarning = warningMsg);
+});
+
+ipcMain.on('open-directory-dialog', function (event,p,index){
+    console.log('open-directory-dialog:',p,index)
+    dialog.showOpenDialog({
+        properties: [p]
+    },function (files) {
+        if (files){
+            event.sender.send('selectedItem', files[0], index)
+        }
+    })
 });
