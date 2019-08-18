@@ -1,6 +1,6 @@
 appId: com.youshi.muwen
 copyright: youshi inc.
-productName: 明兮大语文
+productName: Shell脚本助手
 
 directories:
   output: build/student

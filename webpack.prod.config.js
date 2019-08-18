@@ -71,7 +71,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       chunks: ["app"],
-      title: "明兮大语文",
+      title: "Shell脚本助手",
       template: path.resolve(__dirname, "dev", "index.html"),
       filename: "index.html"
     }),

@@ -1,7 +1,7 @@
 {
   "name": "mingxi",
   "version": "1.1.31",
-  "description": "明兮大语文客户端",
+  "description": "Shell脚本助手客户端",
   "main": "main.js",
   "scripts": {
     "start": "electron .",

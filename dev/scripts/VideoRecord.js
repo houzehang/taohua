@@ -2,7 +2,7 @@ const Q = require('q')
 const fs = $require('fs');
 const Eventer = require('./eventer')
 const desktopCapturer = $require('electron').desktopCapturer;
-const APP_NAME = '明兮大语文';
+const APP_NAME = 'Shell脚本助手';
 
 class VideoRecord extends Eventer {
     constructor() {

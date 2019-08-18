@@ -22,10 +22,10 @@ autoUpdater.logger.transports.file.level = 'info';
 let updateWindow, mainWindow,
     loaded,
     mainWindowHotkeyListener,
-    rationalMaximize = true,
+    rationalMaximize = false,
     screenSize,
     closeWarning,
-    mainWindowSize = { width: 1300, height: 790 },
+    mainWindowSize = { width: 700, height: 350 },
     hotkeyTickTimer;
 
 //register hotkey for mainwindow
@@ -149,7 +149,7 @@ app.on('ready', function () {
         if (process.platform === 'darwin') {
             const template = [
                 {
-                    label: '明兮大语文',
+                    label: 'Shell脚本助手',
                     submenu: [
                         { label: `当前版本 ${app.getVersion()}` },
                         { type: "separator" },
@@ -167,7 +167,7 @@ app.on('ready', function () {
                 {
                     label: '帮助',
                     submenu: [
-                        { label: "关于明兮大语文", click() { require('electron').shell.openExternal('https://mingxi.cn') } }
+                        { label: "关于Shell脚本助手", click() { require('electron').shell.openExternal('https://mingxi.cn') } }
                     ]
                 },
             ]
