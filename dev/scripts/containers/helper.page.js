@@ -90,7 +90,7 @@ class Helper extends React.Component {
            <div className="helper-panel">
                 <div className='nav-bar'>
                     <div className='nav-item name'>脚本名称</div>
-                    <div className='nav-item path'>脚本路径<span>（双击修改）</span></div>
+                    <div className='nav-item path'>脚本路径<span>（双击编辑）</span></div>
                     {/* <div className='nav-item state'>当前状态</div> */}
                     <div className='nav-item controll'>操作<span></span></div>
                     {/* <div className='nav-item hotkey'>快捷键</div> */}
