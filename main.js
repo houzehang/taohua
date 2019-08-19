@@ -94,7 +94,7 @@ function createUpdateWindow() {
         }
     });
     if (TC_DEBUG) {
-        updateWindow.webContents.openDevTools();
+        // updateWindow.webContents.openDevTools();
     }
     updateWindow.on('closed', () => {
         updateWindow = null;
@@ -142,7 +142,8 @@ app.on('ready', function () {
         app.quit()
         return
     }
-    createUpdateWindow();
+    // createUpdateWindow();
+    createMainWindow()
     autoUpdater.checkForUpdates();
 
     if (!TC_DEBUG) {
@@ -204,7 +205,7 @@ function createMainWindow() {
     $main.webContents.setUserAgent(userAgent + ' KCPC');
     $main.loadURL(`file://${__dirname}/dist/index.html`)
     if (TC_DEBUG || TEST) {
-        $main.webContents.openDevTools();
+        // $main.webContents.openDevTools();
     }
     $main.webContents.on('did-finish-load', () => {
         $main.webContents.send('configure', {
