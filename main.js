@@ -250,7 +250,7 @@ function createMainWindow() {
         createMainWindow()
         $main.destroy()
     })
-    $main.setAlwaysOnTop(true)
+    // $main.setAlwaysOnTop(true)
     new StaticServ($main)
     mainWindow = $main
 }
