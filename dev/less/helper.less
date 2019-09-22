@@ -1,3 +1,9 @@
+
+@keyframes click-anim {
+	100%{
+		transform: scale(0.98)
+	}
+}
 .helper-page {
 	background: #eaeaea;
 	width: 100%;
@@ -73,6 +79,9 @@
 					align-items: center;
 					&.invalid{
 						background: #999999;
+					}
+					&:active{
+						animation: click-anim 0.3s linear;
 					}
 				}
 			}
