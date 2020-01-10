@@ -75,11 +75,12 @@
   },
   "author": "youshi inc.",
   "dependencies": {
-    "got": "^8.3.2",
-    "fs-extra": "^7.0.1",
     "electron-log": "^2.2.16",
     "electron-updater": "^4.0.0",
-    "systeminformation": "^4.0.11",
-    "react-rangeslider": "^2.2.0"
+    "fs-extra": "^7.0.1",
+    "got": "^8.3.2",
+    "react-rangeslider": "^2.2.0",
+    "request": "^2.88.0",
+    "systeminformation": "^4.0.11"
   }
 }

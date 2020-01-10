@@ -5,6 +5,7 @@ const electron 		= $require('electron')
 const ipcRenderer 	= electron.ipcRenderer
 const path 			= $require('path')
 const fs   			= $require('fs-extra')
+const request       = $require('request')
 
 class Helper extends React.Component {
 	constructor(props) {
@@ -22,7 +23,90 @@ class Helper extends React.Component {
             status: "空闲中",
 			shells: [...this.$origin]
 		}
-	}
+    }
+    
+    askForResult(address, id) {
+        var options = {
+            url: `http:\/\/${address}/ask`,
+            method: 'post',
+            form: {
+                id
+            },
+            headers: {
+                "content-type": "application/json",
+            },
+            json: true
+        };
+        request(options, (error, response, body)=> {
+            if (!error && response.statusCode == 200) {
+                console.log("response",body)
+                if (body.result == "error") {
+                    console.log("deploy error",body.log)
+                } else if (body.result == "done") {
+                    console.log("deploy done!")
+                    console.log(body.log)
+                    if (body.log && ~body.log.indexOf('upload lesson zip file success')) {
+                        // console.log('MINGXI_DEBUG_LOG>>>>>>>>>上传成功',url);
+
+                        this.setState({
+                            status:'部署成功'
+                        })
+                    } else{
+                        // console.log('MINGXI_DEBUG_LOG>>>>>>>>>上传失败',url);
+
+                        this.setState({
+                            status:'部署失败'
+                        })
+                    }
+                } else {
+                    console.log("waiting for result...")
+                    setTimeout(()=>{
+                        this.askForResult(address, id)
+                    },10000)
+                }
+            } else {
+                console.log("response",response.statusCode)
+            }
+        });
+    }
+
+    deploy(url) {
+        request.get(`http:\/\/47.93.191.180:65530/list`,(err, _, body)=> {
+            if (err) {
+                return console.error('upload failed:', err);
+            }
+            let list = JSON.parse(body)
+            list = list.sort((prev,next)=>{
+                return prev.weight - next.weight > 0 ? -1 : 1
+            })
+            if (list.length > 0) {
+                console.log("choosed server",list[0])
+                var options = {
+                    url: `http:\/\/${list[0].address}/deploy`,
+                    method: 'post',
+                    form: {
+                        url
+                    },
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    json: true
+                };
+                request(options, (error, response, body)=> {
+                    if (!error && response.statusCode == 200) {
+                        console.log("response",body)
+                        if (body.id) {
+                            this.askForResult(list[0].address, body.id)
+                        }
+                    } else {
+                        console.log("response",response.statusCode)
+                    }
+                });
+            } else {
+                console.log("no available server")
+            }
+        })
+    }
 
 	componentDidMount() {
 		ipcRenderer.on('selectedItem',(event, filePath, index)=>{
@@ -34,15 +118,15 @@ class Helper extends React.Component {
 		});
 
 		
-		if (fs.existsSync(this.$json_file)) {
-			let content = fs.readFileSync(this.$json_file, 'utf8')
-			this.setState(JSON.parse(content))
-			console.log(content)
-			console.log('this.state:',this.state)
-		}else{
-			console.log('empty')
-			this.__localStore(this.state)
-		}
+		// if (fs.existsSync(this.$json_file)) {
+		// 	let content = fs.readFileSync(this.$json_file, 'utf8')
+		// 	this.setState(JSON.parse(content))
+		// 	console.log(content)
+		// 	console.log('this.state:',this.state)
+		// }else{
+		// 	console.log('empty')
+		// 	this.__localStore(this.state)
+		// }
 	}
 
 	componentWillUnmount() {
@@ -74,6 +158,7 @@ class Helper extends React.Component {
 	
 	render() {
         console.log('MINGXI_DEBUG_LOG>>>>>>>>>this.state.shells',this.state.shells);
+        let waitingStatus = '部署中，请静候片刻。。。'
 		return  <div className="helper-page">
            <div className="helper-panel">
                 <div className='nav-bar'>
@@ -97,17 +182,21 @@ class Helper extends React.Component {
 						}}>{this.state.status}&nbsp;&nbsp;</div>
 						{/* <div className='shell-item state'>{shell.status}</div> */}
 						<div className='shell-item controll'>
-							<div className={this.state.status != '部署中' ? 'btn-run' : 'btn-run invalid'} onClick={()=>{
+							<div className={this.state.status != waitingStatus ? 'btn-run' : 'btn-run invalid'} onClick={()=>{
+                                if (this.state.status == waitingStatus) {
+                                    return
+                                }
                                 this.setState({
-                                    status:'部署中，请静候片刻。。。'
+                                    status:waitingStatus
                                 })
+                                this.deploy(shell.name)
                                 console.log('MINGXI_DEBUG_LOG>>>>>>>>>this.state.status',this.state.status);
-                                // $require('electron').shell.openItem(shell.state)
-                                setTimeout(() => {
-                                    this.setState({
-                                        status:'部署结束-成功'
-                                    })
-                                }, 3000);
+                                // // $require('electron').shell.openItem(shell.state)
+                                // setTimeout(() => {
+                                //     this.setState({
+                                //         status:'部署结束-成功'
+                                //     })
+                                // }, 3000);
 							}}>部署</div>
 						</div>
 						{/* <div className='shell-item hotkey'>F1</div> */}
