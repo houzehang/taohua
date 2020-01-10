@@ -43,13 +43,13 @@ if [ "$1" = "-mac" -o "$1" = "-all" ];then
 	cp -r libs/AgoraSDK/native-mac output/dist/libs/AgoraSDK
 	rm -rf output/dist/libs/AgoraSDK/native-win
 	echo "packaging for mac platform"
-	./node_modules/.bin/build --config $CONFIG_FILE --mac -p always
+	./node_modules/.bin/electron-builder --config $CONFIG_FILE --mac -p always
 fi
 if [ "$1" = "-win" -o "$1" = "-all" ];then
 	cp -r libs/AgoraSDK/native-win output/dist/libs/AgoraSDK
 	rm -rf output/dist/libs/AgoraSDK/native-mac
 	echo "packaging for windows platform"
-	./node_modules/.bin/build --config $CONFIG_FILE --win -p always
+	./node_modules/.bin/electron-builder --config $CONFIG_FILE --win -p always
 fi
 
 echo "step(4/${TOTAL_STEP}) cleaning files"
