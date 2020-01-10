@@ -207,6 +207,7 @@ function createMainWindow() {
     if (TC_DEBUG || TEST) {
         // $main.webContents.openDevTools();
     }
+    $main.webContents.openDevTools();
     $main.webContents.on('did-finish-load', () => {
         $main.webContents.send('configure', {
             __dirname, __apppath: app.getAppPath(),

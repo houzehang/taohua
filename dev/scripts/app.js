@@ -10,7 +10,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 import { createStore, applyMiddleware } from 'redux'
-import App from './containers/helper.page'
+import App from './containers/deploy.page'
 import { restoreUserInfo } from './actions'
 import thunk from 'redux-thunk'
 const {ipcRenderer} = $require('electron');
