@@ -1,6 +1,6 @@
 appId: com.youshi.muwen
 copyright: youshi inc.
-productName: Shell脚本助手
+productName: 课件部署助手-测试环境
 
 directories:
   output: build/student

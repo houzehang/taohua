@@ -182,7 +182,7 @@ class Helper extends React.Component {
 						}}>{this.state.status}&nbsp;&nbsp;</div>
 						{/* <div className='shell-item state'>{shell.status}</div> */}
 						<div className='shell-item controll'>
-							<div className={this.state.status != waitingStatus ? 'btn-run' : 'btn-run invalid'} onClick={()=>{
+							<div className={this.state.status != waitingStatus &&  shell.name && shell.name.length > 0 ? 'btn-run' : 'btn-run invalid'} onClick={()=>{
                                 if (this.state.status == waitingStatus) {
                                     return
                                 }

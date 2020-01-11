@@ -150,7 +150,7 @@ app.on('ready', function () {
         if (process.platform === 'darwin') {
             const template = [
                 {
-                    label: 'Shell脚本助手',
+                    label: '课件部署助手-测试环境',
                     submenu: [
                         { label: `当前版本 ${app.getVersion()}` },
                         { type: "separator" },
@@ -168,7 +168,7 @@ app.on('ready', function () {
                 {
                     label: '帮助',
                     submenu: [
-                        { label: "关于Shell脚本助手", click() { require('electron').shell.openExternal('https://mingxi.cn') } }
+                        { label: "关于课件部署助手-测试环境", click() { require('electron').shell.openExternal('https://mingxi.cn') } }
                     ]
                 },
             ]
@@ -207,7 +207,6 @@ function createMainWindow() {
     if (TC_DEBUG || TEST) {
         // $main.webContents.openDevTools();
     }
-    $main.webContents.openDevTools();
     $main.webContents.on('did-finish-load', () => {
         $main.webContents.send('configure', {
             __dirname, __apppath: app.getAppPath(),

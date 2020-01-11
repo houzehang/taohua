@@ -167,7 +167,7 @@ class Main extends React.Component {
                             ]) : ([
                                 <div key="0" className="time">接下来没有课程啦～</div>,
                                 <div key="1" className="no-lesson">
-                                    去“Shell脚本助手”小程序<br/>
+                                    去“课件部署助手-测试环境”小程序<br/>
                                     和其他小朋友一起完成作业吧~
                                 </div>
                             ]) }

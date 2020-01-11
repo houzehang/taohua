@@ -71,7 +71,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       chunks: ["app"],
-      title: "Shell脚本助手",
+      title: "课件部署助手-测试环境",
       template: path.resolve(__dirname, "dev", "index.html"),
       filename: "index.html"
     }),
