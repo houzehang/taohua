@@ -334,12 +334,6 @@
     -o-transform: translate(0, -200px);
   }
 }
-* {
-  -webkit-user-select: none;
-}
-input {
-  -webkit-user-select: text;
-}
 body .loading-mask {
   position: fixed;
   width: 100%;
@@ -1002,12 +996,6 @@ template {
 
 [hidden] {
   display: none;
-}
-* {
-  -webkit-user-select: none;
-}
-input {
-  -webkit-user-select: text;
 }
 body .loading-mask {
   position: fixed;

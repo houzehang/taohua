@@ -34,31 +34,31 @@ mainWindowHotkeyListener = {
     tick: function () {
         // 处理从输入框激活状态直接切出,
         // app不响应`browser-window-blur`的问题
-        hotkeyTickTimer = setInterval(() => {
-            try {
-                this.mainWindow && !this.mainWindow.webContents.isFocused() && this.unregister();
-            } catch(e) {
-                console.log("window has been destroy.")
-            }
-        }, 2000);
+        // hotkeyTickTimer = setInterval(() => {
+        //     try {
+        //         this.mainWindow && !this.mainWindow.webContents.isFocused() && this.unregister();
+        //     } catch(e) {
+        //         console.log("window has been destroy.")
+        //     }
+        // }, 2000);
     },
     send: function (key) {
         if (!this.mainWindow) return;
         this.mainWindow.webContents && this.mainWindow.webContents.send('hotkey', key);
     },
     register: function () {
-        for (let _keyName in Hotkey) {
-            globalShortcut.register(Hotkey[_keyName].code, () => {
-                this.send(_keyName);
-            })
-        }
+        // for (let _keyName in Hotkey) {
+        //     globalShortcut.register(Hotkey[_keyName].code, () => {
+        //         this.send(_keyName);
+        //     })
+        // }
     },
     unregister: function () {
-        for (let _keyName in Hotkey) {
-            if (Hotkey[_keyName].windowFocusNeeded) {
-                globalShortcut.unregister(Hotkey[_keyName].code);
-            }
-        }
+        // for (let _keyName in Hotkey) {
+        //     if (Hotkey[_keyName].windowFocusNeeded) {
+        //         globalShortcut.unregister(Hotkey[_keyName].code);
+        //     }
+        // }
     },
 
 }
@@ -212,9 +212,19 @@ function createMainWindow() {
             __dirname, __apppath: app.getAppPath(),
             version: app.getVersion()
         });
-        if (TEACHER) {
-            mainWindowHotkeyListener.mainWindow = $main;
-            mainWindowHotkeyListener.tick();
+        // if (TEACHER) {
+        //     mainWindowHotkeyListener.mainWindow = $main;
+        //     mainWindowHotkeyListener.tick();
+        // }
+
+        if (process.platform === "darwin") {
+            let contents = mainWindow.webContents;
+            globalShortcut.register("CommandOrControl+C", () => {
+              contents.copy();
+            });
+            globalShortcut.register("CommandOrControl+V", () => {
+              contents.paste();
+            });
         }
         
 		SystemInfo.getStaticData((info)=>{
@@ -261,13 +271,28 @@ app.on('window-all-closed', () => {
 
 app.on('browser-window-focus', function () {
     if (TEACHER) {
-        mainWindowHotkeyListener.register();
+        // mainWindowHotkeyListener.register();
+    }
+
+    if (process.platform === "darwin") {
+        let contents = mainWindow.webContents;
+        globalShortcut.register("CommandOrControl+C", () => {
+          contents.copy();
+        });
+        globalShortcut.register("CommandOrControl+V", () => {
+          contents.paste();
+        });
     }
 });
 
 app.on('browser-window-blur', function () {
-    if (TEACHER) {
-        mainWindowHotkeyListener.unregister();
+    // if (TEACHER) {
+    //     mainWindowHotkeyListener.unregister();
+    // }
+
+    if (process.platform === "darwin") {
+        globalShortcut.unregister("CommandOrControl+C");
+        globalShortcut.unregister("CommandOrControl+V");
     }
 });
 

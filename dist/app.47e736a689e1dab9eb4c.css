@@ -424,12 +424,6 @@
     -o-transform: translate(0, -200px);
   }
 }
-* {
-  -webkit-user-select: none;
-}
-input {
-  -webkit-user-select: text;
-}
 body .loading-mask {
   position: fixed;
   width: 100%;
@@ -1092,12 +1086,6 @@ template {
 
 [hidden] {
   display: none;
-}
-* {
-  -webkit-user-select: none;
-}
-input {
-  -webkit-user-select: text;
 }
 body .loading-mask {
   position: fixed;
@@ -2558,7 +2546,6 @@ body .page.course-page .student-area .student .avatar-info {
   color: #fff;
   display: flex;
   align-items: center;
-  user-select: none;
 }
 html .page.course-page .student-area .student .avatar-info .avatar-rank,
 body .page.course-page .student-area .student .avatar-info .avatar-rank {
@@ -3861,4 +3848,14 @@ body .page.course-page .inner .entities-area .teacher-area .avatars .avatar.noth
 html .page.course-page .inner .entities-area .teacher-area .avatars .avatar.nothing .draft,
 body .page.course-page .inner .entities-area .teacher-area .avatars .avatar.nothing .draft {
   display: block;
+}
+html .slave,
+body .slave {
+  position: fixed;
+  width: 0.1rem;
+  height: 0.1rem;
+  background: rgba(0, 0, 0, 0);
+  z-index: 10000;
+  right: 0;
+  top: 0;
 }
