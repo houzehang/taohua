@@ -6,7 +6,7 @@ const ipcRenderer 	= electron.ipcRenderer
 const path 			= $require('path')
 const fs   			= $require('fs-extra')
 const request       = $require('request')
-
+const remote        = electron.remote
 class Helper extends React.Component {
 	constructor(props) {
 		super(props)
@@ -161,6 +161,10 @@ class Helper extends React.Component {
         let waitingStatus = '部署中，请静候片刻。。。'
 		return  <div className="helper-page">
            <div className="helper-panel">
+				<div className='slave' onDoubleClick={()=>{
+					var window = remote.getCurrentWindow();
+					window.webContents.openDevTools();
+				}}></div>
                 <div className='nav-bar'>
                     <div className='nav-item name'>课件名称</div>
                     <div className='nav-item path'>当前状态</div>
