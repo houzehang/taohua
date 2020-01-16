@@ -129,19 +129,19 @@ autoUpdater.on('update-downloaded', () => {
     }, 3000)
 });
 app.on('ready', function () {
-    const shouldQuit = app.makeSingleInstance(() => {
-        let existWindow = updateWindow || mainWindow
-        if (existWindow) {
-            if (existWindow.isMinimized()) {
-                existWindow.restore()
-            }
-            existWindow.focus()
-        }
-    })
-    if (shouldQuit) {
-        app.quit()
-        return
-    }
+    // const shouldQuit = app.makeSingleInstance(() => {
+    //     let existWindow = updateWindow || mainWindow
+    //     if (existWindow) {
+    //         if (existWindow.isMinimized()) {
+    //             existWindow.restore()
+    //         }
+    //         existWindow.focus()
+    //     }
+    // })
+    // if (shouldQuit) {
+    //     app.quit()
+    //     return
+    // }
     // createUpdateWindow();
     createMainWindow()
     autoUpdater.checkForUpdates();
