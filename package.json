@@ -23,7 +23,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babili": "0.0.12",
-    "bl": "^1.2.1",
+    "bl": "^2.2.1",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "browserify": "^13.1.1",
