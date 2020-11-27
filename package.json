@@ -80,7 +80,7 @@
     "fs-extra": "^7.0.1",
     "electron-log": "^2.2.16",
     "electron-updater": "^2.22.1",
-    "systeminformation": "^4.0.11",
+    "systeminformation": "^4.30.5",
     "react-rangeslider": "^2.2.0"
   }
 }
