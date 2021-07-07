@@ -22,10 +22,10 @@ autoUpdater.logger.transports.file.level = 'info';
 let updateWindow, mainWindow,
     loaded,
     mainWindowHotkeyListener,
-    rationalMaximize = true,
+    rationalMaximize = false,
     screenSize,
     closeWarning,
-    mainWindowSize = { width: 1300, height: 790 },
+    mainWindowSize = { width: 1200, height: 600 },
     hotkeyTickTimer;
 
 //register hotkey for mainwindow
@@ -94,7 +94,7 @@ function createUpdateWindow() {
         }
     });
     if (TC_DEBUG) {
-        updateWindow.webContents.openDevTools();
+        // updateWindow.webContents.openDevTools();
     }
     updateWindow.on('closed', () => {
         updateWindow = null;
@@ -142,14 +142,15 @@ app.on('ready', function () {
         app.quit()
         return
     }
-    createUpdateWindow();
+    // createUpdateWindow();
+    createMainWindow()
     autoUpdater.checkForUpdates();
 
     if (!TC_DEBUG) {
         if (process.platform === 'darwin') {
             const template = [
                 {
-                    label: '明兮大语文',
+                    label: 'Shell脚本助手',
                     submenu: [
                         { label: `当前版本 ${app.getVersion()}` },
                         { type: "separator" },
@@ -167,7 +168,7 @@ app.on('ready', function () {
                 {
                     label: '帮助',
                     submenu: [
-                        { label: "关于明兮大语文", click() { require('electron').shell.openExternal('https://mingxi.cn') } }
+                        { label: "关于Shell脚本助手", click() { require('electron').shell.openExternal('https://mingxi.cn') } }
                     ]
                 },
             ]
@@ -204,7 +205,7 @@ function createMainWindow() {
     $main.webContents.setUserAgent(userAgent + ' KCPC');
     $main.loadURL(`file://${__dirname}/dist/index.html`)
     if (TC_DEBUG || TEST) {
-        $main.webContents.openDevTools();
+        // $main.webContents.openDevTools();
     }
     $main.webContents.on('did-finish-load', () => {
         $main.webContents.send('configure', {
@@ -249,6 +250,7 @@ function createMainWindow() {
         createMainWindow()
         $main.destroy()
     })
+    // $main.setAlwaysOnTop(true)
     new StaticServ($main)
     mainWindow = $main
 }
@@ -287,4 +289,15 @@ ipcMain.on('on-closewarning', function (warningMsg) {
 
 ipcMain.on('off-closewarning', function () {
     TEACHER && (closeWarning = warningMsg);
+});
+
+ipcMain.on('open-directory-dialog', function (event,p,index){
+    console.log('open-directory-dialog:',p,index)
+    dialog.showOpenDialog({
+        properties: [p]
+    },function (files) {
+        if (files){
+            event.sender.send('selectedItem', files[0], index)
+        }
+    })
 });
